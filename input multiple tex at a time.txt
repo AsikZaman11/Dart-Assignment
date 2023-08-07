@@ -1,0 +1,8 @@
+import 'dart:io';
+
+void main() {
+  String? list = stdin.readLineSync();
+  List<String> inputList = list!.split(' ');
+  List<int> numberList = inputList.map(int.parse).toList();
+  print('$numberList');
+}

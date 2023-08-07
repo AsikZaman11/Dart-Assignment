@@ -1,0 +1,7 @@
+dynamic number = stdin.readLineSync();
+  int num = int.parse(number);
+  if (num % 2 == 0) {
+    print("$num is a even number");
+  } else {
+    print("$num is a odd number");
+  }
