@@ -2,7 +2,7 @@ import 'dart:io';
 
 void main() {
   //input list of numbers
-  print("Input the list of number representing the grades!");
+  print("Input the list of number representing the grades! using ',' and space between every number");
   var subjects = stdin.readLineSync()!.split(', ');
 
   //sum of the numbers
