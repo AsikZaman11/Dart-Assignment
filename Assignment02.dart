@@ -3,7 +3,7 @@ import 'dart:io';
 void main() {
   //input list of number
   print("Input the list of number representing the grades!");
-  var subjects = stdin.readLineSync()!.split(' ');
+  var subjects = stdin.readLineSync()!.split(', ');
 
   //sum of the number
   double sum = 0;
@@ -26,3 +26,13 @@ void main() {
     print("Failed");
   }
 }
+
+
+/*
+sample output:
+Input the list of number representing the grades!
+85, 92, 78, 65, 88, 72
+Student's average grade: 80.0
+Rounded average: 80
+Passed
+*/
