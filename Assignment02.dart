@@ -29,6 +29,7 @@ void main() {
 
 
 /*
+Sample Output:
 Input the list of number representing the grades! using ',' and space between every number
 85, 92, 78, 65, 88, 72
 Student's average grade: 80.0
