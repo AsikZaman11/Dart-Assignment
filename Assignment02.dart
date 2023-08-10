@@ -1,21 +1,21 @@
 import 'dart:io';
 
 void main() {
-  //input list of number
+  //input list of numbers
   print("Input the list of number representing the grades!");
   var subjects = stdin.readLineSync()!.split(', ');
 
-  //sum of the number
+  //sum of the numbers
   double sum = 0;
   subjects.forEach((element) {
     sum += double.parse(element);
   });
 
-  //average of the number
+  //average of the numbers
   double avg = (sum / subjects.length);
   print("Student's average grade: $avg");
 
-  //round average of the number
+  //round average of the numbers
   int roundAvg = avg.toInt();
   print("Rounded average: $roundAvg");
 
