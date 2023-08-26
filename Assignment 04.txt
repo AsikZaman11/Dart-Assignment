@@ -47,17 +47,17 @@ class CurrentAccount extends Account {
 void main() {
   SavingsAccount sa = SavingsAccount(1123456, 10000, 0.15);
   print(
-      'Account No:${sa.accountNumber} Inatial Balance: ${sa.balance} Interest Rate: ${sa.interestRate}');
+      'Account No:${sa.accountNumber} Inatial Balance: ${sa.balance} \$ Interest Rate: ${sa.interestRate}');
   sa.deposit(5000);
-  print('After deposit balance is: ${sa.balance}');
+  print('After deposit balance is: ${sa.balance} \$');
   sa.withdraw(1000);
-  print('After withdraw balance is: ${sa.balance}');
-  print('Interest on remaining balance is: ${sa.remainingBalIntRate}');
+  print('After withdraw balance is: ${sa.balance} \$');
+  print('Interest on remaining balance is: ${sa.remainingBalIntRate} \$');
   CurrentAccount ca = CurrentAccount(1145454, 5000, 1000);
   print(
-      'Account No:${ca.accountNumber} Inatial Balance: ${ca.balance} Overdraft Limit: ${ca.overdraftLimit}');
+      'Account No:${ca.accountNumber} Inatial Balance: ${ca.balance}\$ Overdraft Limit: ${ca.overdraftLimit} \$');
   ca.deposit(5000);
-  print('After deposit balance is: ${ca.balance}');
+  print('After deposit balance is: ${ca.balance} \$');
   ca.withdraw(50000);
-  print('After withdraw balance is: ${ca.balance}');
+  print('After withdraw balance is: ${ca.balance} \$');
 }
