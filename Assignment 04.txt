@@ -1,0 +1,62 @@
+abstract class Account {
+  late int accountNumber;
+  late double balance;
+
+  Account(this.accountNumber, this.balance);
+
+  double deposit(double amount) {
+    return balance += amount;
+  }
+
+  double withdraw(double amount);
+}
+
+class SavingsAccount extends Account {
+  double interestRate;
+  late double remainingBalIntRate;
+
+  SavingsAccount(int accountNumber, double balance, this.interestRate)
+      : super(accountNumber, balance) {
+    
+  }
+
+  @override
+  double withdraw(double amount) {
+    balance -= amount;
+    return remainingBalIntRate = balance * interestRate;
+  }
+}
+
+class CurrentAccount extends Account {
+  double overdraftLimit;
+
+  CurrentAccount(int accountNumber, double balance, this.overdraftLimit)
+      : super(accountNumber, balance) {
+    if (overdraftLimit > balance) {
+      print('insufficient funds');
+    }
+  }
+
+  @override
+  double withdraw(double amount) {
+    return balance -= amount;
+  }
+}
+
+void main() {
+  SavingsAccount sa = SavingsAccount(1123456, 10000, 0.15);
+  print(
+      'Account No:${sa.accountNumber} Inatial Balance: ${sa.balance} Interest Rate: ${sa.interestRate}');
+  sa.deposit(5000);
+  print('After 5000 tk deposit balance is: ${sa.balance}');
+  sa.withdraw(1000);
+  print('After 500 tk withdraw balance is: ${sa.balance}');
+  print('Interest on remaining balance is: ${sa.remainingBalIntRate}');
+  CurrentAccount ca = CurrentAccount(1145454, 5000, 10000);
+  print(
+      'Account No:${ca.accountNumber} Inatial Balance: ${ca.balance} Overdraft Limit: ${ca.overdraftLimit}');
+  ca.deposit(5000);
+  print('After 5000 tk deposit balance is: ${ca.balance}');
+  ca.withdraw(500);
+  print('After 500 tk withdraw balance is: ${ca.balance}');
+}
