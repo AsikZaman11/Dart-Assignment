@@ -131,7 +131,7 @@ class MyActivity extends StatelessWidget {
                   width: 50,
                   child: IconButton(onPressed: () {
                       mySnackBar("Photos Uploaded Successfully!", context);
-                    }, icon: Icon(Icons.upload),
+                    }, icon: Icon(Icons.upload,color: Colors.white,),
 
                     ),
                   )
