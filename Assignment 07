@@ -1,0 +1,203 @@
+
+import 'package:flutter/material.dart';
+
+
+void main(List<String> args) {
+  runApp(MyApp());
+}
+
+
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+
+class _MyAppState extends State<MyApp> {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyNewApp(),
+    );
+  }
+}
+
+
+
+
+
+
+class MyNewApp extends StatefulWidget {
+  MyNewApp({super.key});
+
+
+
+  @override
+  State<MyNewApp> createState() => _MyNewAppState();
+}
+
+
+class _MyNewAppState extends State<MyNewApp> {
+
+
+  List product = [
+    {'Product':'Product 1','Price':100,'Count':0,},
+    {'Product':'Product 2','Price':200,'Count':0,},
+    {'Product':'Product 3','Price':300,'Count':0,},
+    {'Product':'Product 4','Price':400,'Count':0,},
+    {'Product':'Product 5','Price':100,'Count':0,},
+    {'Product':'Product 6','Price':200,'Count':0,},
+    {'Product':'Product 7','Price':300,'Count':0,},
+    {'Product':'Product 8','Price':400,'Count':0,},
+    {'Product':'Product 9','Price':300,'Count':0,},
+    {'Product':'Product 10','Price':400,'Count':0,},
+
+  ];
+
+  int count1=0;
+  int count2=0;
+  int count3=0;
+  int count4=0;
+  int count5=0;
+  int count6=0;
+  int count7=0;
+  int count8=0;
+  int count9=0;
+  int count10=0;
+  int? sum;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List'),
+        centerTitle: true,
+      ),
+      body:
+      Center(
+        child: ListView.builder(
+            itemCount: product.length,
+            itemBuilder: (context,index){
+              return ListTile(
+                onTap: (){
+                  setState(() {
+                    if(product[index]['id']==1){
+
+
+                    }
+                  });
+
+                },
+                title: Text(product[index]['Product']),
+                subtitle: Text(product[index]['Price'].toString()),
+                trailing: Column(
+                  children: [
+                    Text(product[index]['Count'].toString()),
+                    ElevatedButton(onPressed: (){
+                      setState(() {
+
+                        for(int i=0;i<product.length;i++){
+                          if(product[index]['Product']=='Product 1' && product[index]['Price']>0){
+                            count1=1;
+
+                          }
+                          if(product[index]['Product']=='Product 2' && product[index]['Price']>0){
+                            count2=1;
+                          }
+                          if(product[index]['Product']=='Product 3' && product[index]['Price']>0){
+                            count3=1;
+                          }if(product[index]['Product']=='Product 4' && product[index]['Price']>0){
+                            count4=1;
+                          } if(product[index]['Product']=='Product 5' && product[index]['Price']>0){
+                            count5=1;
+
+                          }
+                          if(product[index]['Product']=='Product 6' && product[index]['Price']>0){
+                            count6=1;
+                          }
+                          if(product[index]['Product']=='Product 7' && product[index]['Price']>0){
+                            count7=1;
+                          }if(product[index]['Product']=='Product 8' && product[index]['Price']>0){
+                            count8=1;
+                          }
+                          if(product[index]['Product']=='Product 9' && product[index]['Price']>0){
+                            count9=1;
+                          }if(product[index]['Product']=='Product 10' && product[index]['Price']>0){
+                            count10=1;
+                          }
+                        }
+
+
+
+
+                        product[index]['Count']++;
+                        if(product[index]['Count']==5){
+                          showDialog(context: context, builder: (context){
+                            return AlertDialog(
+                              content: Text("You've bought ${product[index]['Count']} ${product[index]['Product']}!"),
+                              title: Text("Congratulations!"),
+                              actions: [
+                                TextButton(onPressed: (){
+                                  Navigator.pop(context);
+                                }, child: Text('Ok'))
+                              ],
+                            );
+
+                          }
+                          );
+                        }
+                      }
+                      );
+                    }, child: Text('Buy Now'))
+                  ],
+                ),
+
+              );
+            }
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          sum = count1+count2+count3+count4+count5+count6+count7+count8+count9+count10;
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage(sum)));
+        },
+        child: Icon(Icons.shopping_cart),
+      ),
+
+    );
+  }
+}
+
+
+
+
+class CartPage extends StatelessWidget {
+  int? productCount;
+  CartPage(this.productCount, {Key? key}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cart'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Total Product: ${productCount!}')
+          ],
+        ),
+      ),
+    );
+  }
+}
